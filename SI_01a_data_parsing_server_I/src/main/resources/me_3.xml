@@ -1,0 +1,9 @@
+<Person>
+    <Name>Hero</Name>
+    <Hobbies>
+        <hobby>sleeping</hobby>
+        <hobby>eating</hobby>
+        <hobby>reading</hobby>
+    </Hobbies>
+    <!-- This person has many hobbies -->
+</Person>

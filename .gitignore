@@ -1,0 +1,44 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+out/
+*.iml
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
+dist/
+build/
+
+# IntelliJ
+.idea/
+*.iws
+
+# General
+*.log
+*.tmp
+*.lock
+.env
+
+# OS Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary Files
+*.swp
+*.swo
+*.temp
+*.bak
+*.backup

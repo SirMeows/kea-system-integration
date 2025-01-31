@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Person>
+    <Name>Hero</Name>
+    <Occupation>Software Developer</Occupation>
+    <Hobbies>
+        <Hobby>
+            <Name>sleeping</Name>
+            <!-- Additional details here -->
+        </Hobby>
+        <Hobby>
+            <Name>eating</Name>
+            <!-- Additional details here -->
+        </Hobby>
+        <Hobby>
+            <Name>reading</Name>
+            <!-- Additional details here -->
+        </Hobby>
+    </Hobbies>
+</Person>

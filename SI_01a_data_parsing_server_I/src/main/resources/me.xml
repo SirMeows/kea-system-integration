@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Person>
+    <Name>Hero</Name>
+    <Hobbies>
+        <string>sleeping</string>
+        <string>eating</string>
+        <string>reading</string>
+    </Hobbies>
+    <!-- This person has many hobbies -->
+</Person>
