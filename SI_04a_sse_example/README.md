@@ -1,7 +1,9 @@
 # 04a [Individual] SSE Example
 
-**Type**: Individual
+Type: Individual
 
-Create an SSE example. 
+Create or use an SSE example.
 
-We already created two during the class but create one in any language that you understand for the exam. 
+You can reuse one of the two we created in class or create a new one. The important thing is that you understand the example well.
+
+For this assignment, I will ask about implementation details of SSE during the exam.
