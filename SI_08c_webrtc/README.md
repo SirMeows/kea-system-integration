@@ -1,0 +1,5 @@
+# 08c [Individual] WebRTC Example
+
+**Type**: Individual
+
+Have a WebRTC example where you can explain the overall parts.
