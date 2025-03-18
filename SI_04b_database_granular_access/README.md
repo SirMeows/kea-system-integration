@@ -1,30 +1,52 @@
-# 03b [Pair] Database granular access
+# 04b [Pair] Database granular data access
 
-This is a pair-wise project but the hand-in is individual. 
+**Type**: Work in pairs. Switch role between exposee and integrator. 
 
-Work in pairs (two and two). Switch role as exposee and integrator. 
+**Hand-in**: The hand-in is individual for the mandatory. While this is a pairwise project, the pairs should not end up with the same files.
 
-The point of creating users that have granular access will make having a REST API redundant. This is integration at a database level. 
+---
 
-## Exposee
+## Granular Data Access
 
-Create a page that documents a way to access the data. 
- 
+Access control could be part of the assignment but the end-goal is to achieve granularity in accessing the smallest possible unit of data.
 
-## Integrator
+Setting up roles and granting them permissions for write/read/both is part of the process but we are focused on the data.
+
+In order to achieve this, a database must be selected that allows for the most granular access to data as possible.
+
+---
+
+## Working in pairs
+
+Switch role between exposee and integrator. 
+
+There is a Teams channel in the System Integration room called `Without_a_pair`. Use this channel to find a partner.
+
+### Exposee
+
+Create a page that documents a way to access the data. It must contain all necessary information for the integrator to connect to the database.
+
+Since the integrator integrates at the database level, any API code is redundant. It's a no-code assignment.
+
+### Integrator
 
 Connect to the database and try to manipulate the data. Do also try to write to tables/collections you aren’t allowed to.
 
-If the documentation is insufficient then help your partner by telling them to add the necessary information in the documentation rather than having them only fix it in production. 
+If the documentation is insufficient then help your partner by telling them to add the necessary information in the documentation rather than getting this information over private messages. 
 
+You are not allowed to write any code. Connect through a database CLI.
  
+---
+
 ## Do it again
 
-Switch roles between exposee and integrator. Work independently. Absolutely do not sit together and solve the assignment. Agreeing on a database that both use is not a good sign. 
+Switch roles between exposee and integrator. Work independently. Absolutely do not sit together and solve the assignment. Agreeing on a database that both use is a bad omen.
+
+---
 
 ## Requirements
 
-**Deploy**: The database must be hosted at some point. No requirement regarding keeping them hosted for the exam. That’s why thorough documentation and screenshots is important to bring to the exam. 
+**Access**: The exposee can choose to deploy the database, create a Docker image or HTTP tunnel. There's no requirement regarding keeping the database hosted for the exam. That’s why thorough documentation and screenshots is important for the exam. 
 
 **Granularity**: There must be data that the integrator:
 
@@ -32,21 +54,17 @@ Switch roles between exposee and integrator. Work independently. Absolutely do n
 - Can only read
 - Can read and write
 
-There are no requirements regarding choice of database but given the constraint regarding granular access part of the assignment is to research and choose well. The more granular the better! There are wrong choices here. 
+Remember that the end-goal is to achieve granularity in accessing the smallest possible unit of data.
 
+There are no requirements regarding choice of database but given the constraint regarding granular access part of the assignment is to research and choose well. The more granular the better! There **are** wrong choices here. Do proper research. Here are two websites that list all the possible databases: https://dbdb.io/, https://db-engines.com/en/ranking.
 
+Having had the database course is not an advantage to suceeding at this assignment. The common pitfall is choosing a database by familiarity. It's imperative to research and choose well.
 
-**Complete Documentation**: The Exposee's documentation must include all necessary information for integration, such as usernames and passwords. Missing information is an indicator of inadequate documentation.
+**Complete Documentation**: The Exposee's documentation must include all necessary information for integration, such as usernames and passwords. Any stranger should be able to integrate without consulting the exposee.
 
 The Integrator should focus on verifying the Exposee's documentation's effectiveness for integration. Direct assistance or collaboration in solving the assignment is not allowed.
 
-## Granular Access
-
-* **Detailed Permissions**: Specifies precise access levels for different parts of a database.
-* **Controlled Access**: Users have access only to necessary data, not the entire database.
-* **Enhanced Security**: Limits exposure of sensitive data by restricting user access.
-* **Data Integrity**: Reduces risk of unauthorized alterations, maintaining data accuracy.
-
+---
 
 ## Project Timeline and milestones
 
@@ -56,14 +74,17 @@ This is not a task that should be solved within the week. Split up the assignmen
 - Week 2: Set up the database and start creating the documentation.
 - Week 3: Send the documentation to the integrator and change the documentation according to their feedback. Also take the role as integrator for your partner, try to connect and give feedback. 
 
+---
 
 ## For the exam
 
-Exposee: Besides the docs given to the integrator you must also generate docs for the entire database. 
+Exposee: Besides the docs given to the integrator you must also generate docs for the entire database.
+
 Exposee: It is recommended to create a document where you note down the result of your research containing arguments for and against various databases. 
 
 **Hand-in**: 
 
-There will be two hand-ins:
-2. **Exposee**: Documentation 
-1. **Integrator**: Screenshots. 
+There will be two hand-ins in your role as:
+
+1. **Exposee**: Documentation 
+2. **Integrator**: Screenshots. 
