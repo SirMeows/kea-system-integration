@@ -42,3 +42,11 @@ Desktop.ini
 *.temp
 *.bak
 *.backup
+
+# VSCode Local Settings
+.vscode/
+
+# Uploaded User Files
+uploads/*
+!uploads/.gitkeep
+
