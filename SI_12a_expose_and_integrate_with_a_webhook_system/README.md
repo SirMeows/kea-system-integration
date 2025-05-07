@@ -1,6 +1,8 @@
-# 05a [Pair] Expose and Integrate with a Webhook System
+# 12a [Pair] Expose and Integrate with a Webhook System
 
 **Type**: Work in pairs. Switch role between exposee and integrator. 
+
+---
 
 ## Exposee 
 
@@ -16,7 +18,7 @@ Facilitate the Integrator's ability to register and unregister webhooks for vari
 **Webhook Registration System**:
 - Develop a simple mechanism for webhook registration and unregistration. 
 - Include instructions in your documentation on how to use this system.
-- Having an UI is not a requirement. 
+- Having an UI is not a requirement.
 
 **Ping Event and Random Calls**:
 - Implement the endpoint `/ping` for testing that an integrator can call which should then call all the registered webhooks. 
@@ -24,6 +26,8 @@ Facilitate the Integrator's ability to register and unregister webhooks for vari
 
 **Internals: Storage of Endpoint Data**
 - Use a straightforward storage method for registered endpoints (e.g., Sqlite, NeDB, plaintext files).
+
+---
 
 ## Integrator
 
@@ -33,13 +37,18 @@ The integrator would be akin to a Github user trying to register a webhook.
 
 - Create a script that registers a webhook.  
 
-## Hosting
+---
 
-Both parts of the system should be deployed. The exposee should consider a serverless solution. 
+## Hosting [Optional]
 
+Deploying the system is optional. If the goal is to host the system on both sides, then a serverless approach would be ideal. 
+
+---
 
 ## Hand-in.
 
 There will be two hand-ins:
-2. **Exposee**: Code + documentation. (As always, all information on how to integrate should be clear via documentation.)
-1. **Integrator**: Code + screenshots. 
+
+1. **Exposee**: Code + documentation. (As always, all information on how to integrate should be clear via documentation.)
+
+2. **Integrator**: Code + screenshots. 
