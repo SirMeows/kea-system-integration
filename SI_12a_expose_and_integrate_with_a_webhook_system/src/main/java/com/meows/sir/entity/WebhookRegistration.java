@@ -1,7 +1,9 @@
 package com.meows.sir.entity;
 
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -9,10 +11,11 @@ import java.util.UUID;
 @EqualsAndHashCode
 @Getter
 @Setter
+@Document
 public class WebhookRegistration {
-    private final UUID uuid = UUID.randomUUID();
+    private UUID uuid = UUID.randomUUID();
 
-    private final Long webhookRegisteredTime = System.currentTimeMillis();
+    private Instant webhookRegisteredTime = Instant.now();
 
     private String webhookUrl;
 

@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.meows.sir</groupId>
-    <artifactId>SI_05a_expose_and_integrate_with_a_webhook_system</artifactId>
+    <artifactId>SI_12a_expose_and_integrate_with_a_webhook_system</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>Shopper-Buddy-Webhook</name>
     <properties>
@@ -66,6 +66,20 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>8.0.0.Final</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb-reactive -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+            <version>3.4.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/de.flapdoodle.embed/de.flapdoodle.embed.mongo -->
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>4.20.0</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

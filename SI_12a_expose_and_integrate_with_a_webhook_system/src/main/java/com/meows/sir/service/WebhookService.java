@@ -1,7 +1,6 @@
 package com.meows.sir.service;
 
 import com.meows.sir.entity.WebhookRegistration;
-import com.meows.sir.entity.WebhookRegistrationDto;
 import com.meows.sir.repository.WebhookRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,7 +14,12 @@ import reactor.core.publisher.Mono;
 @Service
 public class WebhookService {
     private WebhookRepository webhookRepository;
-    public void registerWebhook(Mono<WebhookRegistration> registration) {
-        webhookRepository.registerWebhook(registration);
+
+    public Mono<WebhookRegistration> registerWebhook(WebhookRegistration registration) {
+        return webhookRepository.save(registration);
+    }
+
+    public Mono<Void> clearWebhookRepository() {
+        return webhookRepository.deleteAll();
     }
 }

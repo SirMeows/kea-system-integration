@@ -1,5 +1,6 @@
-package com.meows.sir.entity;
+package com.meows.sir.dto;
 
+import com.meows.sir.entity.EventType;
 import lombok.*;
 
 @AllArgsConstructor

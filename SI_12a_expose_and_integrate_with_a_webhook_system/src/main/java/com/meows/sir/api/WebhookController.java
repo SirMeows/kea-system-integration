@@ -1,7 +1,7 @@
 package com.meows.sir.api;
 
 import com.meows.sir.entity.WebhookRegistration;
-import com.meows.sir.entity.WebhookRegistrationDto;
+import com.meows.sir.dto.WebhookRegistrationDto;
 import com.meows.sir.service.EventTriggerService;
 import com.meows.sir.service.WebhookService;
 import jakarta.annotation.security.PermitAll;
@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,14 +26,19 @@ public class WebhookController {
 
     @PermitAll
     @PostMapping("/ping")
-    public void pingServer() {
-        eventTriggerService.triggerEvents();
+    public Mono<Void> pingServer() {
+        return eventTriggerService.triggerEvents();
     }
 
     @PermitAll
     @PostMapping("/register")
-    public void registerUrl(@RequestBody WebhookRegistrationDto body) {
+    public Mono<WebhookRegistration> registerUrl(@RequestBody WebhookRegistrationDto body) {
         var webhookRegistration = modelMapper.map(body, WebhookRegistration.class);
-        webhookService.registerWebhook(Mono.just(webhookRegistration));
+        return webhookService.registerWebhook(webhookRegistration);
+    }
+
+    @DeleteMapping("/clear-webhooks")
+    public Mono<Void> clearWebhooks() {
+        return webhookService.clearWebhookRepository();
     }
 }
