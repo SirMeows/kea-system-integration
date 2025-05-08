@@ -1,54 +1,139 @@
-# 12a [Pair] Expose and Integrate with a Webhook System
+# Webhook System Documentation
 
-**Type**: Work in pairs. Switch role between exposee and integrator. 
+## Project Architecture
 
----
+The application is built using the following technologies and patterns:
 
-## Exposee 
+- **Framework**: Spring WebFlux (Reactive Stack)
+- **Database**: MongoDB
+- **Architecture Pattern**: Layered Architecture
+  - Controllers (API Layer)
+  - Services (Business Logic)
+  - Repositories (Data Access)
+- **Key Components**:
+  - Webhook Registration System
+  - Event Trigger System
+  - RESTful API Endpoints
 
-The exposee would be akin to Github. Try to imagine what systems they have to allow for webhook registration.
+## API Documentation
 
-Facilitate the Integrator's ability to register and unregister webhooks for various event types.
+The service is hosted at: `https://sunfish-fitting-goat.ngrok-free.app`
+**Important Notice Regarding Service Availability**:
+The service operates on an on-demand basis. Prior to integration testing, please contact the service administrator to schedule service activation.
 
-**Event Types**: 
-- Choose a consistent theme for your events (e.g., payment or invoice processes).
-- Define clear event types such as “payment received”, “payment processed”, “invoice processing”, “invoice completed”.
-- Ensure that the endpoints are well-documented.
+### Endpoints
 
-**Webhook Registration System**:
-- Develop a simple mechanism for webhook registration and unregistration. 
-- Include instructions in your documentation on how to use this system.
-- Having an UI is not a requirement.
+#### 1. Register Webhook
+- **Endpoint**: `/register`
+- **Method**: POST
+- **Content-Type**: application/json
+- **Request Body Structure**:
+```json
+{
+  "webhookUrl": "string",
+  "eventType": "string"
+}
+```
 
-**Ping Event and Random Calls**:
-- Implement the endpoint `/ping` for testing that an integrator can call which should then call all the registered webhooks. 
-- Include guidelines on how these features work in your documentation.
+**Response Structure**:
+```json
+{
+  "uuid": "string (UUID)",
+  "webhookRegisteredTime": "string (ISO-8601 format)",
+  "webhookUrl": "string",
+  "eventType": "string"
+}
+```
 
-**Internals: Storage of Endpoint Data**
-- Use a straightforward storage method for registered endpoints (e.g., Sqlite, NeDB, plaintext files).
+**Supported Event Types**:
+- `LIST_CREATED`
+- `LIST_MODIFIED`
+- `LIST_DELETED`
 
----
+**Example Request using Postman**:
+1. Open Postman
+2. Create a new POST request to `https://sunfish-fitting-goat.ngrok-free.app/register`
+3. Set header `Content-Type: application/json`
+4. Add request body:
+```json
+{
+    "webhookUrl": "https://webhook.site/your-webhook-id",
+    "eventType": "LIST_CREATED"
+}
+```
 
-## Integrator
+**Example Response**:
+```json
+{
+  "uuid": "11ceeb5b-b60b-4e66-9f19-42697d5ae516",
+  "webhookRegisteredTime": "2024-03-08T12:34:15Z",
+  "webhookUrl": "https://webhook.site/your-webhook-id",
+  "eventType": "LIST_CREATED"
+}
+```
 
-The integrator would be akin to a Github user trying to register a webhook. 
+#### 2. Ping (Test Webhooks)
+- **Endpoint**: `/ping`
+- **Method**: POST
+- **Description**: Triggers all registered webhooks for testing purposes
 
-- Setup a web server. 
+**Example Request using Postman**:
+1. Create a new POST request to `https://sunfish-fitting-goat.ngrok-free.app/ping`
+2. No request body needed
 
-- Create a script that registers a webhook.  
+### Webhook Event Payload
 
----
+When an event is triggered (via ping), your registered endpoint will receive a POST request with the following payload structure:
 
-## Hosting [Optional]
+```json
+{
+    "id": "UUID",
+    "event": "EVENT_TYPE",
+    "timestamp": "ISO-8601 timestamp"
+}
+```
 
-Deploying the system is optional. If the goal is to host the system on both sides, then a serverless approach would be ideal. 
+#### 3. Unregister Webhook
+- **Endpoint**: `/unregister`
+- **Method**: DELETE
+- **Content-Type**: application/json
+- **Request Body Structure**:
+```json
+{
+  "webhookUrl": "string",
+  "eventType": "string"
+}
+```
 
----
+**Supported Event Types**: (same as registration)
+- `LIST_CREATED`
+- `LIST_MODIFIED`
+- `LIST_DELETED`
 
-## Hand-in.
+**Example Request using Postman**:
+1. Create a new DELETE request to `https://sunfish-fitting-goat.ngrok-free.app/unregister`
+2. Set header `Content-Type: application/json`
+3. Add request body:
+```json
+{
+    "webhookUrl": "https://webhook.site/your-webhook-id",
+    "eventType": "LIST_CREATED"
+}
+```
 
-There will be two hand-ins:
+- **Response**: No content (204 status code)
 
-1. **Exposee**: Code + documentation. (As always, all information on how to integrate should be clear via documentation.)
+## Testing Your Integration
 
-2. **Integrator**: Code + screenshots. 
+1. First, ensure you have a publicly accessible endpoint that can receive webhook POST requests
+  - You can use services like webhook.site for testing
+2. Register your webhook using the `/register` endpoint
+3. Test the integration by calling the `/ping` endpoint
+4. Your registered endpoint should receive webhook events for all registered event types
+
+## Error Handling
+
+The API will return appropriate HTTP status codes:
+- 200: Successful operation
+- 400: Bad request (invalid payload)
+- 500: Server error

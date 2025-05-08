@@ -9,10 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @AllArgsConstructor
@@ -32,13 +30,16 @@ public class WebhookController {
 
     @PermitAll
     @PostMapping("/register")
-    public Mono<WebhookRegistration> registerUrl(@RequestBody WebhookRegistrationDto body) {
+    public Mono<WebhookRegistration> registerWebhook(@RequestBody WebhookRegistrationDto body) {
         var webhookRegistration = modelMapper.map(body, WebhookRegistration.class);
         return webhookService.registerWebhook(webhookRegistration);
     }
 
-    @DeleteMapping("/clear-webhooks")
-    public Mono<Void> clearWebhooks() {
-        return webhookService.clearWebhookRepository();
+    @PermitAll
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/unregister")
+    public Mono<Void> unregisterWebhook(@RequestBody WebhookRegistration body) {
+        var webhookRegistration = modelMapper.map(body, WebhookRegistration.class);
+        return webhookService.unregisterWebhook(webhookRegistration);
     }
 }
