@@ -126,10 +126,11 @@ When an event is triggered (via ping), your registered endpoint will receive a P
 ## Testing Your Integration
 
 1. First, ensure you have a publicly accessible endpoint that can receive webhook POST requests
-  - You can use services like webhook.site for testing
 2. Register your webhook using the `/register` endpoint
 3. Test the integration by calling the `/ping` endpoint
 4. Your registered endpoint should receive webhook events for all registered event types
+5. Delete webhook registrations by using the `/unregister` endpoint
+6. Test that webhooks were unregistered by calling the `/ping` endpoint
 
 ## Error Handling
 
