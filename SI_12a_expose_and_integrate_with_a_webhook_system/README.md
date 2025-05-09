@@ -17,7 +17,6 @@ The application is built using the following technologies and patterns:
 
 ## API Documentation
 
-The service is hosted at: `https://sunfish-fitting-goat.ngrok-free.app`
 **Important Notice Regarding Service Availability**:
 The service operates on an on-demand basis. Prior to integration testing, please contact the service administrator to schedule service activation.
 
@@ -52,7 +51,7 @@ The service operates on an on-demand basis. Prior to integration testing, please
 
 **Example Request using Postman**:
 1. Open Postman
-2. Create a new POST request to `https://sunfish-fitting-goat.ngrok-free.app/register`
+2. Create a new POST request to `/register`
 3. Set header `Content-Type: application/json`
 4. Add request body:
 ```json
@@ -78,7 +77,7 @@ The service operates on an on-demand basis. Prior to integration testing, please
 - **Description**: Triggers all registered webhooks for testing purposes
 
 **Example Request using Postman**:
-1. Create a new POST request to `https://sunfish-fitting-goat.ngrok-free.app/ping`
+1. Create a new POST request to `/ping`
 2. No request body needed
 
 ### Webhook Event Payload
@@ -111,7 +110,7 @@ When an event is triggered (via ping), your registered endpoint will receive a P
 - `LIST_DELETED`
 
 **Example Request using Postman**:
-1. Create a new DELETE request to `https://sunfish-fitting-goat.ngrok-free.app/unregister`
+1. Create a new DELETE request to `/unregister`
 2. Set header `Content-Type: application/json`
 3. Add request body:
 ```json
