@@ -19,6 +19,7 @@ The application is built using the following technologies and patterns:
 
 **Important Notice Regarding Service Availability**:
 The service operates on an on-demand basis. Prior to integration testing, please contact the service administrator to schedule service activation.
+The service administrator will also provide you the public url where the service is hosted.
 
 ### Endpoints
 
