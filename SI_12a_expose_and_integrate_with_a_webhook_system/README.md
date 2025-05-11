@@ -1,20 +1,5 @@
 # Webhook System Documentation
 
-## Project Architecture
-
-The application is built using the following technologies and patterns:
-
-- **Framework**: Spring WebFlux (Reactive Stack)
-- **Database**: MongoDB
-- **Architecture Pattern**: Layered Architecture
-  - Controllers (API Layer)
-  - Services (Business Logic)
-  - Repositories (Data Access)
-- **Key Components**:
-  - Webhook Registration System
-  - Event Trigger System
-  - RESTful API Endpoints
-
 ## API Documentation
 
 **Important Notice Regarding Service Availability**:
