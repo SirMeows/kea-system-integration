@@ -1,0 +1,48 @@
+{
+  "$jsonSchema": {
+    "bsonType": "object",
+    "required": [
+      "_id",
+      "_class",
+      "breed",
+      "name",
+      "stats"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "binData"
+      },
+      "_class": {
+        "bsonType": "string"
+      },
+      "breed": {
+        "bsonType": "string"
+      },
+      "name": {
+        "bsonType": "string"
+      },
+      "stats": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "_id": {
+              "bsonType": "binData"
+            },
+            "statType": {
+              "bsonType": "string"
+            },
+            "statValue": {
+              "bsonType": "int"
+            }
+          },
+          "required": [
+            "_id",
+            "statType",
+            "statValue"
+          ]
+        }
+      }
+    }
+  }
+}
