@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class StripeIntegration {
     public Product createProduct() throws StripeException {
-        Product product = createStripeProduct();
+        var product = createStripeProduct();
         var price = assignPrice(product);
         product.setDefaultPrice(price.getId());
 
@@ -22,7 +22,8 @@ public class StripeIntegration {
     public PaymentLink createPaymentLink(Product product, long quantity) throws StripeException {
         PaymentLinkCreateParams link =
                 PaymentLinkCreateParams.builder()
-                        .addLineItem(PaymentLinkCreateParams.LineItem.builder()
+                        .addLineItem(
+                                PaymentLinkCreateParams.LineItem.builder()
                                 .setPrice(product.getDefaultPrice())
                                 .setQuantity(quantity).build())
                         .build();
@@ -48,11 +49,11 @@ public class StripeIntegration {
     private static Product createStripeProduct() throws StripeException {
         ProductCreateParams productParams =
                 ProductCreateParams.builder()
-                        .setName("fluffy bunny")
-                        .setDescription("beautiful fluffy bunny")
+                        .setName("Glam Beard Pirate Bunny")
+                        .setDescription("Beautiful Bearded Glitter Bunny")
                         .build();
         Product product = Product.create(productParams);
-        System.out.println("Success! Here is your starter subscription product id: " + product.getId());
+        System.out.println("Success! Here is your product id: " + product.getId());
         return product;
     }
 }
