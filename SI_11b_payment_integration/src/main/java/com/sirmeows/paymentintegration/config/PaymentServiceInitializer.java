@@ -22,7 +22,8 @@ public class PaymentServiceInitializer {
         Stripe.apiKey = stripeApiKey;
 
         try {
-            stripeIntegration.createProduct();
+            var product = stripeIntegration.createProduct();
+            stripeIntegration.createPaymentLink(product, 1);
         } catch (StripeException e) {
             e.printStackTrace();
         }
