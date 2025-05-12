@@ -4,6 +4,7 @@ import com.meows.sir.entity.EventType;
 import com.meows.sir.entity.WebhookRegistration;
 import com.meows.sir.repository.WebhookRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.EnumSet;
 import java.util.UUID;
 
+@Slf4j
 @AllArgsConstructor
 @Service
 public class EventTriggerService {
@@ -49,6 +51,13 @@ public class EventTriggerService {
                                 registration.getWebhookUrl()
                         )
                 )
+                .onErrorResume(error -> {
+                    log.error("Failed to send notification to {}: {}",
+                            registration.getWebhookUrl(),
+                            error.getMessage());
+                    return Mono.empty(); // Continue with other webhooks even if one fails
+                })
+
                 .then();
     }
 

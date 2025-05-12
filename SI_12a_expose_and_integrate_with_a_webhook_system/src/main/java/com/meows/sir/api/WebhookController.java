@@ -8,11 +8,13 @@ import jakarta.annotation.security.PermitAll;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @AllArgsConstructor
 @RestController
 @Getter
@@ -25,7 +27,12 @@ public class WebhookController {
     @PermitAll
     @PostMapping("/ping")
     public Mono<Void> pingServer() {
-        return eventTriggerService.triggerEvents();
+        return eventTriggerService.triggerEvents()
+                .doOnError(error -> log.error("Error in pingServer: ", error))
+                .onErrorResume(error -> {
+                    log.error("Error during event trigger: ", error);
+                    return Mono.error(error);
+                });
     }
 
     @PermitAll

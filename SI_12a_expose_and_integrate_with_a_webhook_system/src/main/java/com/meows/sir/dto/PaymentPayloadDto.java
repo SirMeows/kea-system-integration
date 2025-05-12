@@ -9,7 +9,7 @@ import java.time.Instant;
 @EqualsAndHashCode
 @Getter
 @Setter
-public class PaymentWebhookPayloadDto {
+public class PaymentPayloadDto {
     private String event;
     private Instant timestamp;
     private String message;
