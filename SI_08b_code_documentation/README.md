@@ -23,8 +23,16 @@ You are free to use others but this if just for reference.
 | Python      | Sphinx, PyDoc, MkDocs                  |
 | Ruby        | RDoc, YARD                             |
 
+# Delivery by SirMeows
+
 **Link to DLS Project:**  
 https://github.com/DLShomies/FluffyPlushiesWebShop
+
+**Link to Identity Service:**  
+https://github.com/DLShomies/FluffyPlushiesWebShop/tree/main/IdentityService  
+
+**Link to Identity Service Architecture Documentation:**  
+https://github.com/DLShomies/FluffyPlushiesWebShop/tree/main/IdentityService/src/main/java/com/dlshomies/fluffyplushies/docs  
 
 **Link to API Contracts:**  
 https://github.com/DLShomies/swagger-api-contracts
