@@ -11,6 +11,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
@@ -45,8 +46,7 @@ public class WebhookController {
     @PermitAll
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/unregister")
-    public Mono<Void> unregisterWebhook(@RequestBody WebhookRegistration body) {
-        var webhookRegistration = modelMapper.map(body, WebhookRegistration.class);
-        return webhookService.unregisterWebhook(webhookRegistration);
+    public Mono<Void> unregisterWebhook(@RequestParam("url") String webhookUrl) {
+        return webhookService.unregisterWebhook(webhookUrl);
     }
 }

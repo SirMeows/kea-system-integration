@@ -21,6 +21,7 @@
         <springboot.version>3.2.2</springboot.version>
         <springboot.security.version>6.2.2</springboot.security.version>
         <jackson.version>2.16.2</jackson.version>
+        <lombok.version>1.18.30</lombok.version>
     </properties>
 
     <dependencies>
@@ -50,7 +51,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
 

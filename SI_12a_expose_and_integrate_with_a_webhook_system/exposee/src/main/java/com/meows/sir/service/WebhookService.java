@@ -19,7 +19,7 @@ public class WebhookService {
         return webhookRepository.save(registration);
     }
 
-    public Mono<Void> unregisterWebhook(WebhookRegistration webhookRegistration) {
-        return webhookRepository.deleteAllByWebhookUrl(webhookRegistration.getWebhookUrl());
+    public Mono<Void> unregisterWebhook(String webhookUrl) {
+        return webhookRepository.deleteAllByWebhookUrl(webhookUrl);
     }
 }
